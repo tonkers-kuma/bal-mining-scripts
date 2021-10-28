@@ -31,14 +31,14 @@ networks.forEach((network) => {
 
     console.log('Merkle roots');
     const claim_data = {};
-    const hex_proofs = {};
+    const tokens_data = [];
     const roots = {};
 
     reports.forEach(([week, report]) => {
         if (week != 73) return;
         config['week'] = week;
         claim_data['config'] = config;
-        claim_data['hex_proofs'] = hex_proofs;
+        claim_data['token_data'] = tokens_data;
         const merkleTree = loadTree(report);
         console.log(`Week ${week}`);
         const root = merkleTree.getHexRoot();
@@ -50,6 +50,7 @@ networks.forEach((network) => {
         }
 
         ssb.forEach((address) => {
+            const token_data = {};
             const claimable = report[address];
             if (claimable > 0) {
                 const proof = merkleTree.getHexProof(
@@ -57,7 +58,10 @@ networks.forEach((network) => {
                 );
                 console.log(`Hex proof for ${address}`);
                 console.log(proof);
-                hex_proofs[address] = proof;
+                token_data['address'] = address;
+                token_data['claim_amount'] = toWei(claimable);
+                token_data['hex_proof'] = proof;
+                tokens_data.push(token_data);
             }
         });
     });
