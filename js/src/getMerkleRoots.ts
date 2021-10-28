@@ -38,7 +38,7 @@ networks.forEach((network) => {
         if (week != 73) return;
         config['week'] = week;
         claim_data['config'] = config;
-        claim_data['token_data'] = tokens_data;
+        claim_data['tokens_data'] = tokens_data;
         const merkleTree = loadTree(report);
         console.log(`Week ${week}`);
         const root = merkleTree.getHexRoot();
