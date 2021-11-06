@@ -35,7 +35,7 @@ networks.forEach((network) => {
     const roots = {};
 
     reports.forEach(([week, report]) => {
-        if (week != 73) return;
+        if (week != 74) return;
         config['week'] = week;
         claim_data['config'] = config;
         claim_data['tokens_data'] = tokens_data;
