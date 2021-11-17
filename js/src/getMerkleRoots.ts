@@ -13,7 +13,8 @@ const ssb_usdt = '0x3ef6Ec70D4D8fE69365C92086d470bb7D5fC92Eb';
 const ssb_usdc = '0x520BF095FA58cB3f68C18D01746041733A1f7b85';
 const ssb_wbtc = '0x7c1612476D235c8054253c83B98f7Ca6f7F2E9D0';
 const ssb_weth = '0xc31763c0c3025b9DF3Fb7Cb7f4AC041866F64F2E';
-const ssb = [ssb_dai, ssb_usdt, ssb_usdc, ssb_wbtc, ssb_weth];
+const sms = '0x16388463d60FFE0661Cf7F1f31a7D658aC790ff7';
+const ssb = [ssb_dai, ssb_usdt, ssb_usdc, ssb_wbtc, ssb_weth, sms];
 
 networks.forEach((network) => {
     const config = liquidityMiningConfig[network];
@@ -35,7 +36,7 @@ networks.forEach((network) => {
     const roots = {};
 
     reports.forEach(([week, report]) => {
-        if (week != 74) return;
+        if (week != 75) return;
         config['week'] = week;
         claim_data['config'] = config;
         claim_data['tokens_data'] = tokens_data;
