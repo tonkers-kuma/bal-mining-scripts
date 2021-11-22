@@ -36,7 +36,7 @@ networks.forEach((network) => {
     const roots = {};
 
     reports.forEach(([week, report]) => {
-        if (week != 75) return;
+        if (week != 76) return; // Find the latest week of claims here: https://github.com/balancer-labs/bal-mining-scripts/tree/master/reports
         config['week'] = week;
         claim_data['config'] = config;
         claim_data['tokens_data'] = tokens_data;
@@ -68,7 +68,7 @@ networks.forEach((network) => {
     });
     const claim_data_string = JSON.stringify(claim_data, null, 4);
     fs.writeFile(
-        `../yearn/strategy-ssb/scripts/${network}.json`,
+        `../strategy-ssb/scripts/${network}.json`, // This is target file where generated proofs will be written
         claim_data_string,
         function (err) {
             if (err) {
